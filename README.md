@@ -16,7 +16,7 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
-![Home](https://github.com/luisfevq/Condominio_app/blob/develop/home.png?raw=true)
+![Home](https://github.com/luisfevq/Condominio_app/blob/develop/home.png?raw=true=100x20)
 
 
 return Container(
