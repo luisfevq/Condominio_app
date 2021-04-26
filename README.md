@@ -11,6 +11,8 @@ samples, guidance on mobile development, and a full API reference.
 <img src="https://github.com/luisfevq/Condominio_app/blob/develop/home.png" width="250" align="left"/>
 <img src="https://github.com/luisfevq/Condominio_app/blob/develop/menu.png" width="250"/>
 
+<img src="https://github.com/luisfevq/Condominio_app/blob/develop/preview.jpeg" width="250"/>
+
 <Enter>
 
 ```dart
