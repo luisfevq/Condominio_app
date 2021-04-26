@@ -44,13 +44,13 @@ ThemeService().switchTheme
    - isVisible
   * Eliminar servicios
 
--- id
--- createdAt
--- updatedAt
--- serviceName
--- serviceDescription
--- serviceTag
--- idServiceType
--- idUser
--- state                (active, inactive)
--- isVisible
+- id
+- createdAt
+- updatedAt
+- serviceName
+- serviceDescription
+- serviceTag
+- idServiceType
+- idUser
+- state                (active, inactive)
+- isVisible
