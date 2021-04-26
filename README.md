@@ -28,3 +28,29 @@ onPressed: () {
 ThemeService().switchTheme
 ```
 
+
+- Servicios (CRUD)
+  * Crear servicios
+  * Listar servicios 
+    - listAll
+    - listWhereUserId
+    - listByTypeService
+    - searchServiceByTag
+  * Editar servicios
+   - serviceName
+   - serviceDescription
+   - serviceTag
+   - idServiceType
+   - isVisible
+  * Eliminar servicios
+
+-- id
+-- createdAt
+-- updatedAt
+-- serviceName
+-- serviceDescription
+-- serviceTag
+-- idServiceType
+-- idUser
+-- state                (active, inactive)
+-- isVisible
