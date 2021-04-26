@@ -37,11 +37,11 @@ ThemeService().switchTheme
     - listByTypeService
     - searchServiceByTag
   * Editar servicios
-   - serviceName
-   - serviceDescription
-   - serviceTag
-   - idServiceType
-   - isVisible
+    - serviceName
+    - serviceDescription
+    - serviceTag
+    - idServiceType
+    - isVisible
   * Eliminar servicios
 
 - id
