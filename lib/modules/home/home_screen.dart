@@ -1,5 +1,6 @@
 import 'package:condominio_app/data/services/theme_service.dart';
 import 'package:condominio_app/modules/card_service/card_service_screen.dart';
+import 'package:condominio_app/modules/concierge/concierge_screen.dart';
 import 'package:condominio_app/modules/drawer/drawer_screen.dart';
 import 'package:condominio_app/modules/information/information_screen.dart';
 import 'package:flutter/material.dart';
@@ -100,48 +101,50 @@ class HomeScreen extends StatelessWidget {
           // Cards services
           Container(
             width: double.infinity,
-            height: 200.0,
+            height: Get.height * .78,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    // _buildCardService(
-                    //   text: "Areas Comunes",
-                    //   icon: Icons.park,
-                    //   color: 0xFF3695DF,
-                    // ),
-                    // _buildCardService(
-                    //   text: "Visitas",
-                    //   icon: Icons.people,
-                    //   color: 0xFF1CB29B,
-                    // ),
-                    _buildCardService(
-                      text: "Conserje",
-                      icon: Icons.room_service,
-                      color: 0xFFF39730,
-                    ),
-                  ],
+                _buildCardService(
+                  text: "Conserje",
+                  icon: Icons.room_service,
+                  color: 0xFFF39730,
+                  page: () => ConciergeScreen(),
+                  enabled: true,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _buildCardService(
-                      text: "Servicios",
-                      icon: Icons.engineering_rounded,
-                      color: 0xFF4B4CE7,
-                    ),
-                    _buildCardService(
-                      text: "Emergencia",
-                      icon: Icons.warning_rounded,
-                      color: 0xFFFC5933,
-                    ),
-                    // _buildCardService(
-                    //   text: "Servicio",
-                    //   icon: Icons.room_service,
-                    // ),
-                  ],
+                _buildCardService(
+                  text: "Servicios",
+                  icon: Icons.engineering_rounded,
+                  color: 0xFF4B4CE7,
+                  page: () => CardServiceScreen(
+                    titleAppBar: "Servicios",
+                  ),
+                  enabled: true,
+                ),
+                _buildCardService(
+                  text: "Emergencia",
+                  icon: Icons.warning_rounded,
+                  color: 0xFFFC5933,
+                  page: () => CardServiceScreen(
+                    titleAppBar: "Emergencia",
+                  ),
+                  enabled: true,
+                ),
+                _buildCardService(
+                  text: "Areas Comunes",
+                  icon: Icons.park,
+                  color: 0xFF3695DF,
+                  page: () => CardServiceScreen(
+                    titleAppBar: "Areas Comunes",
+                  ),
+                ),
+                _buildCardService(
+                  text: "Visitas",
+                  icon: Icons.people,
+                  color: 0xFF1CB29B,
+                  page: () => CardServiceScreen(
+                    titleAppBar: "Visitas",
+                  ),
                 ),
               ],
             ),
@@ -171,33 +174,53 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCardService({String text, IconData icon, int color}) {
+  Widget _buildCardService(
+      {VoidCallback page,
+      String text,
+      IconData icon,
+      int color,
+      bool enabled = false}) {
+    BoxDecoration boxDecoration;
+    Color _color;
+    if (enabled) {
+      boxDecoration = BoxDecoration(
+        color: Get.isDarkMode ? Color(0xFF171B1E) : Color(0xFFE1E1E3),
+        borderRadius: BorderRadius.circular(15.0),
+      );
+      _color = Color(color);
+    } else {
+      boxDecoration = BoxDecoration(
+        color: Get.isDarkMode
+            ? Color(0xFF171B1E).withOpacity(.4)
+            : Color(0xFFE1E1E3).withOpacity(.4),
+        borderRadius: BorderRadius.circular(15.0),
+      );
+      _color = Color(color).withOpacity(.4);
+    }
     return GestureDetector(
-      onTap: () {
-        Get.to(
-          () => CardServiceScreen(
-            titleAppBar: text,
-          ),
-          fullscreenDialog: true,
-        );
-      },
+      onTap: enabled
+          ? () {
+              Get.to(
+                page,
+                fullscreenDialog: true,
+              );
+            }
+          : null,
       child: Container(
-        width: Get.width * .22,
+        width: Get.width * .9,
         height: 80.0,
         padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Get.isDarkMode ? Color(0xFF171B1E) : Color(0xFFE1E1E3),
-          borderRadius: BorderRadius.circular(15.0),
-        ),
+        margin: EdgeInsets.only(bottom: 20.0),
+        decoration: boxDecoration,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(icon, size: 30.0, color: Color(color)),
+            Icon(icon, size: 30.0, color: _color),
             Text(
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(color),
+                color: _color,
               ),
             ),
           ],
