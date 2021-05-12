@@ -1,6 +1,6 @@
 import 'package:condominio_app/core/theme/theme.dart';
 import 'package:condominio_app/data/services/theme_service.dart';
-import 'package:condominio_app/modules/home/home_screen.dart';
+import 'package:condominio_app/modules/new/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
-      home: HomeScreen(),
+      home: NewHome(),
     );
   }
 }
