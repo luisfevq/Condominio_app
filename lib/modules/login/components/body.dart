@@ -16,7 +16,14 @@ class Body extends StatelessWidget {
               "../assets/images/ws_girl.png",
               width: size.width * 0.3,
             ),
-          )
+          ),
+          Positioned(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text("CondominApp", style: TextStyle(fontWeight: FontWeight.bold))
+            ],
+          ))
         ],
       ),
     );
